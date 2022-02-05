@@ -31,10 +31,10 @@ public class statefarmmainpage {
 	}
 	
 	
-	public void clickondropdown(){
+	public void clickondropdown(){//Action-clicking on the category dropdown
 		dropdown.click();
 	}
-	public void clickondropdownoption2() {
+	public void clickondropdownoption2() {//Action-clicking on the homeowner option in dropdown
 		dropdownoption2.click();
 	}
 	public void typeinzipcode(String text) {//Action-typing in the zipcode
