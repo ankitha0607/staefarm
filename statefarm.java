@@ -17,9 +17,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import pageobjects.statefarmmainpage;
 
 public class statefarm {
+	//initializing driver for class
 	private static WebDriver driver = null;
-	//static ExtentTest test;
-	//static ExtentReports report;
+	//Crearing a new extent report
 	ExtentReports extent = new ExtentReports();
 	ExtentSparkReporter spark = new ExtentSparkReporter("Spark.html");
 	
@@ -27,31 +27,32 @@ public class statefarm {
 	
 	@BeforeTest
 	public void setUpTest() {
-		
+		//Setting up chrome driver
 		extent.attachReporter(spark);
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 	}
 	@Test
 	public void statefarmautoinsurance(){
-    	statefarmmainpage mainpage = new statefarmmainpage(driver);
-    	test1.log(Status.INFO,"Starting test case");
-    	driver.get("https://www.statefarm.com/");
-    	test1.pass("Navigated to statefarm.com");
-    	mainpage.clickondropdown();
-    	test1.pass("Clicked on the dropdown button");
-    	mainpage.clickondropdownoption2();
-    	test1.pass("Selected the Homeowners drop down option");
-    	mainpage.typeinzipcode("55447");
-    	test1.pass("Entered the zip code in zipcode textbox");
-    	mainpage.getaquotebutton();
-    	test1.pass("Clicked on the get quote button");
-    	try {
-			Thread.sleep(5);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 //Creating object for statefarmmainpage class
+		statefarmmainpage mainpage = new statefarmmainpage(driver);
+		test1.log(Status.INFO,"Starting test case");
+		//Opening statefarm.com in browser
+    	        driver.get("https://www.statefarm.com/");
+    	        test1.pass("Navigated to statefarm.com");
+                //Clicking on category dropdown
+    	        mainpage.clickondropdown(); 
+    	        test1.pass("Clicked on the dropdown button");
+		//Clicking on the Homeowners drop down option
+    	        mainpage.clickondropdownoption2();
+    	        test1.pass("Selected the Homeowners drop down option");
+		//Entering the zip code in zipcode textbox
+    	        mainpage.typeinzipcode("55447");
+    	        test1.pass("Entered the zip code in zipcode textbox");
+		//Clicking on the get quote button
+    	        mainpage.getaquotebutton();
+    	        test1.pass("Clicked on the get quote button");
+    	       
     	}
 	@AfterTest
 	public void tearDownTest() {
